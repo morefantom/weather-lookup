@@ -34,7 +34,10 @@ class EnterCityViewModel(
 
         val cityList = geoCodingDataStore
             .get(cityName = cityName, apiKey = apiKey)
-            .catch {}
+            .catch {
+                it.localizedMessage
+                "string"
+            }
             .singleOrNull()
 
         if (cityList.isNullOrEmpty()) {
