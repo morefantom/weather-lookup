@@ -72,6 +72,8 @@ class EnterCityFragment : Fragment() {
     }
 
     private fun FragmentEnterCityBinding.renderError(errorState: EnterCityState.Error) {
+        etCity.isVisible = true
+        btnLookup.isVisible = true
         tvError.isVisible = true
 
         val errorMessage = when (errorState) {
