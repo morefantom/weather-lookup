@@ -72,10 +72,6 @@ class EnterCityViewModel(
         _state.value = State(EnterCityState.Error.FetchWeatherDetailsFailed)
     }
 
-    private fun setStateStopExit() {
-        _state.value = State(EnterCityState.Stop.Exit)
-    }
-
     private fun setStateStopProceed(forecast: ForecastModel) {
         _state.value = State(EnterCityState.Stop.Proceed(forecast))
     }

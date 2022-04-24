@@ -84,13 +84,8 @@ class EnterCityFragment : Fragment() {
 
     private fun renderStop(stopState: EnterCityState.Stop) {
         when (stopState) {
-            EnterCityState.Stop.Exit -> exit()
             is EnterCityState.Stop.Proceed -> proceed(stopState.forecast)
         }
-    }
-
-    private fun exit() {
-        requireActivity().finish()
     }
 
     private fun proceed(forecast: ForecastModel) {

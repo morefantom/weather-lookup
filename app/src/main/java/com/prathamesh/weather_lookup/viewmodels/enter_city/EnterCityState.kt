@@ -10,7 +10,6 @@ sealed class EnterCityState {
         object FetchWeatherDetailsFailed: Error()
     }
     sealed class Stop: EnterCityState() {
-        object Exit: Stop()
         data class Proceed(val forecast: ForecastModel): Stop()
     }
 }
