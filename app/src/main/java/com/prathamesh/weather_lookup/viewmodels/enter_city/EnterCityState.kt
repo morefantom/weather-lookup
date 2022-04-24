@@ -1,5 +1,7 @@
 package com.prathamesh.weather_lookup.viewmodels.enter_city
 
+import com.prathamesh.weather_lookup.models.ForecastModel
+
 sealed class EnterCityState {
     object Start: EnterCityState()
     object Loading: EnterCityState()
@@ -9,6 +11,6 @@ sealed class EnterCityState {
     }
     sealed class Stop: EnterCityState() {
         object Exit: Stop()
-        object Proceed: Stop()
+        data class Proceed(val forecast: ForecastModel): Stop()
     }
 }

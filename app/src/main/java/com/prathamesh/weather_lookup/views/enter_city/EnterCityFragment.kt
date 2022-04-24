@@ -11,20 +11,26 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.prathamesh.weather_lookup.R
 import com.prathamesh.weather_lookup.databinding.FragmentEnterCityBinding
+import com.prathamesh.weather_lookup.datastores.remotestores.ForecastRemoteStore
+import com.prathamesh.weather_lookup.datastores.remotestores.GeoCodingRemoteStore
+import com.prathamesh.weather_lookup.models.ForecastModel
 import com.prathamesh.weather_lookup.viewmodels.enter_city.EnterCityState
 import com.prathamesh.weather_lookup.viewmodels.enter_city.EnterCityViewModel
+import com.prathamesh.weather_lookup.viewmodels.enter_city.EnterCityViewModelFactory
 
 class EnterCityFragment : Fragment() {
 
     private lateinit var binding: FragmentEnterCityBinding
     private lateinit var navController: NavController
-    private val viewModel: EnterCityViewModel by viewModels()
+    private val viewModel: EnterCityViewModel by viewModels {
+        EnterCityViewModelFactory(GeoCodingRemoteStore(), ForecastRemoteStore())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentEnterCityBinding.inflate(inflater,container, false)
+        binding = FragmentEnterCityBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -42,7 +48,7 @@ class EnterCityFragment : Fragment() {
         refresh()
 
         if (state == null) {
-             renderStart()
+            renderStart()
         } else when (state) {
             EnterCityState.Start -> renderStart()
             EnterCityState.Loading -> renderLoading()
@@ -79,7 +85,7 @@ class EnterCityFragment : Fragment() {
     private fun renderStop(stopState: EnterCityState.Stop) {
         when (stopState) {
             EnterCityState.Stop.Exit -> exit()
-            EnterCityState.Stop.Proceed -> proceed()
+            is EnterCityState.Stop.Proceed -> proceed(stopState.forecast)
         }
     }
 
@@ -87,7 +93,7 @@ class EnterCityFragment : Fragment() {
         requireActivity().finish()
     }
 
-    private fun proceed() {
+    private fun proceed(forecast: ForecastModel) {
         navController.navigate(EnterCityFragmentDirections.actionEnterCityFragmentToDetailsFragment())
     }
 
