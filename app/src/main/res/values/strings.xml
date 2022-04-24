@@ -4,5 +4,6 @@
     //Enter City
     <string name="enter_city_hint_city">Enter city name</string>
     <string name="enter_city_button_lookup">Lookup</string>
-    <string name="enter_city_label_error">error</string>
+    <string name="enter_city_label_error_coordinates">City Name is Incorrect</string>
+    <string name="enter_city_label_error_weather">Weather Details not available</string>
 </resources>
