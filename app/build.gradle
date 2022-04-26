@@ -20,16 +20,16 @@ android {
     buildTypes {
         release {
             buildConfigField "String", "OPENWEATHER_BASE_URL", "\"http://api.openweathermap.org/\""
-            buildConfigField "String", "OPENWEATHER_BASE_URL_PRO", "\"https://pro.openweathermap.org/\""
-            buildConfigField "String", "OPENWEATHER_API_KEY", "\"65d00499677e59496ca2f318eb68c049\""
+            buildConfigField "String", "OPENWEATHER_BASE_URL_PRO", "\"https://api.openweathermap.org/\""
+            buildConfigField "String", "OPENWEATHER_API_KEY", "\"9e047fbb32f8d232aff1d1f829c1343e\""
 
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
             buildConfigField "String", "OPENWEATHER_BASE_URL", "\"http://api.openweathermap.org/\""
-            buildConfigField "String", "OPENWEATHER_BASE_URL_PRO", "\"https://pro.openweathermap.org/\""
-            buildConfigField "String", "OPENWEATHER_API_KEY", "\"65d00499677e59496ca2f318eb68c049\""
+            buildConfigField "String", "OPENWEATHER_BASE_URL_PRO", "\"https://api.openweathermap.org/\""
+            buildConfigField "String", "OPENWEATHER_API_KEY", "\"9e047fbb32f8d232aff1d1f829c1343e\""
         }
     }
     compileOptions {

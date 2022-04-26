@@ -14,6 +14,7 @@ import com.prathamesh.weather_lookup.databinding.FragmentEnterCityBinding
 import com.prathamesh.weather_lookup.datastores.remotestores.ForecastRemoteStore
 import com.prathamesh.weather_lookup.datastores.remotestores.GeoCodingRemoteStore
 import com.prathamesh.weather_lookup.models.ForecastModel
+import com.prathamesh.weather_lookup.viewmodels.HomeViewModel
 import com.prathamesh.weather_lookup.viewmodels.enter_city.EnterCityState
 import com.prathamesh.weather_lookup.viewmodels.enter_city.EnterCityViewModel
 import com.prathamesh.weather_lookup.viewmodels.enter_city.EnterCityViewModelFactory
@@ -25,6 +26,7 @@ class EnterCityFragment : Fragment() {
     private val viewModel: EnterCityViewModel by viewModels {
         EnterCityViewModelFactory(GeoCodingRemoteStore(), ForecastRemoteStore())
     }
+    private val homeViewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -91,6 +93,7 @@ class EnterCityFragment : Fragment() {
     }
 
     private fun proceed(forecast: ForecastModel) {
+        homeViewModel.setForecast(forecast)
         navController.navigate(EnterCityFragmentDirections.actionEnterCityFragmentToDetailsFragment())
     }
 

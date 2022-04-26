@@ -14,6 +14,6 @@ class GeoCodingRemoteStore : GeoCodingDataStore {
 
     override fun get(cityName: String, apiKey: String) = flow {
         val result = service.get(city = cityName, apiKey = apiKey)
-        emit(result.getOrThrow())
+        emit(result)
     }.flowOn(Dispatchers.IO)
 }

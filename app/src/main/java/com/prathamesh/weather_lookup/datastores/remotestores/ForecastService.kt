@@ -6,10 +6,10 @@ import retrofit2.http.Query
 
 interface ForecastService {
 
-    @GET("/data/2.5/forecast/hourly")
+    @GET("/data/2.5/weather")
     suspend fun get(
-        @Query("appid") apiKey: String,
+        @Query("lat") latitude: String,
         @Query("lon") longitude: String,
-        @Query("lat") latitude: String
-    ) : Result<ForecastModel>
+        @Query("appid") apiKey: String
+    ) : ForecastModel
 }

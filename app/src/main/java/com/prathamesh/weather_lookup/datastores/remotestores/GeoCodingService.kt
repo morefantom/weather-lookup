@@ -10,5 +10,5 @@ interface GeoCodingService {
     suspend fun get(
         @Query("q") city: String,
         @Query("appid") apiKey: String
-    ): Result<List<CityModel>>
+    ): List<CityModel>
 }

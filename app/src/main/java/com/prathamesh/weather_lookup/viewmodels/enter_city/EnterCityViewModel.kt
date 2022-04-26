@@ -30,13 +30,12 @@ class EnterCityViewModel(
     fun onClickLookup(cityName: String) = viewModelScope.launch {
         setStateLoading()
 
-        val apiKey = BuildConfig.OPENWEATHER_BASE_URL
+        val apiKey = BuildConfig.OPENWEATHER_API_KEY
 
         val cityList = geoCodingDataStore
             .get(cityName = cityName, apiKey = apiKey)
             .catch {
                 it.localizedMessage
-                "string"
             }
             .singleOrNull()
 

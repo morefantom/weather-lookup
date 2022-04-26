@@ -12,6 +12,6 @@ class ForecastRemoteStore : ForecastDataStore {
 
     override fun get(longitude: String, latitude: String, apiKey: String) = flow {
         val result = service.get(longitude = longitude, latitude = latitude, apiKey = apiKey)
-        emit(result.getOrThrow())
+        emit(result)
     }
 }
