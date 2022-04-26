@@ -6,4 +6,7 @@
     <string name="enter_city_button_lookup">Lookup</string>
     <string name="enter_city_label_error_coordinates">City Name is Incorrect</string>
     <string name="enter_city_label_error_weather">Weather Details not available</string>
+
+    //Details
+    <string name="details_label_temp">Temp:</string>
 </resources>

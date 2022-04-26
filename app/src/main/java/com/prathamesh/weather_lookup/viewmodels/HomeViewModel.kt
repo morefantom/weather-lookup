@@ -10,4 +10,6 @@ class HomeViewModel : ViewModel() {
     fun setForecast(forecast: ForecastModel) {
         this.forecast = forecast
     }
+
+    fun getForecast() = forecast
 }

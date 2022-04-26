@@ -26,7 +26,7 @@ class EnterCityFragment : Fragment() {
     private val viewModel: EnterCityViewModel by viewModels {
         EnterCityViewModelFactory(GeoCodingRemoteStore(), ForecastRemoteStore())
     }
-    private val homeViewModel: HomeViewModel by viewModels()
+    private val homeViewModel: HomeViewModel by viewModels(ownerProducer = {requireActivity()})
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
