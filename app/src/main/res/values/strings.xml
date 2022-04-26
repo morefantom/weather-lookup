@@ -9,4 +9,7 @@
 
     //Details
     <string name="details_label_temp">Temp:</string>
+
+    //Advance Details
+    <string name="advance_details_feels_like_label">Feels Like:</string>
 </resources>

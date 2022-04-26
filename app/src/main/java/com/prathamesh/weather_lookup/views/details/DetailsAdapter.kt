@@ -7,17 +7,20 @@ import com.prathamesh.weather_lookup.databinding.RowDetailsBinding
 import com.prathamesh.weather_lookup.models.ForecastModel
 
 class DetailsAdapter(
-    private val details: List<ForecastModel>
+    private val details: List<ForecastModel>,
+    private val onClick: (ForecastModel) -> Unit
 ) : RecyclerView.Adapter<DetailsAdapter.ViewHolder>() {
 
     class ViewHolder(
         private val rowBinding: RowDetailsBinding
     ) : RecyclerView.ViewHolder(rowBinding.root) {
 
-        fun bind(model: ForecastModel) {
+        fun bind(model: ForecastModel, onClick: (ForecastModel) -> Unit) {
             rowBinding.apply {
+                clMain.setOnClickListener { onClick(model) }
                 tvWeather.text = model.weatherList?.firstOrNull()?.description ?: ""
                 tvTemp.text = model.main?.temp?.toString() ?: ""
+
             }
         }
     }
@@ -28,7 +31,7 @@ class DetailsAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(details[position])
+        holder.bind(details[position], onClick)
     }
 
     override fun getItemCount() = details.size

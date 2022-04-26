@@ -18,7 +18,7 @@ class DetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailsBinding
     private lateinit var navController: NavController
-    private val homeViewModel: HomeViewModel by viewModels(ownerProducer = {requireActivity()})
+    private val homeViewModel: HomeViewModel by viewModels(ownerProducer = { requireActivity() })
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,9 +39,15 @@ class DetailsFragment : Fragment() {
     private fun FragmentDetailsBinding.render(forecast: ForecastModel?) {
         if (forecast != null) {
             rvDetails.apply {
-                adapter = DetailsAdapter(listOf(forecast))
+                adapter = DetailsAdapter(listOf(forecast)) {
+                    proceed()
+                }
                 layoutManager = LinearLayoutManager(requireContext())
             }
         }
+    }
+
+    private fun proceed() {
+        navController.navigate(DetailsFragmentDirections.actionDetailsFragmentToAdvanceDetailsFragment())
     }
 }
